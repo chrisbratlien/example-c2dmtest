@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2010 Google Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->example
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.c2dmtest"
+    android:versionCode="2010051702"
+    android:versionName="0.3.2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- required for accessing the device ID -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Cloud to Device Messaging permissions -->
+    <permission
+        android:name="com.example.c2dmtest.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.example.c2dmtest.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
+
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name">
+
+        <activity android:name=".c2dmTest"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+       <!-- In order to use the c2dm library, an
+               application must declare a class with the name C2DMReceiver, in its
+               own package, extending com.google.android.c2dm.C2DMBaseReceiver
+
+               It must also include this section in the manifest, replacing
+                "com.google.android.apps.chrometophone" with its package name.
+           -->
+        <service android:name=".C2DMReceiver" />
+
+        <!-- Only Google services can send messages to the app. If this permission weren't set
+             any other app would be able to send messages to us. -->
+        <receiver android:name="com.google.android.c2dm.C2DMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <!-- Receive actual messages -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.example.c2dmtest" />
+            </intent-filter>
+            <!-- Receive registration ids -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.example.c2dmtest" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <uses-sdk android:minSdkVersion="8"/>
+</manifest>

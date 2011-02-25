@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/FileToPhoneReceiver/src/com/google/android/c2dm
+END
+C2DMBaseReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2/trunk/FileToPhoneReceiver/src/com/google/android/c2dm/C2DMBaseReceiver.java
+END
+C2DMessaging.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2/trunk/FileToPhoneReceiver/src/com/google/android/c2dm/C2DMessaging.java
+END
+C2DMBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2/trunk/FileToPhoneReceiver/src/com/google/android/c2dm/C2DMBroadcastReceiver.java
+END
